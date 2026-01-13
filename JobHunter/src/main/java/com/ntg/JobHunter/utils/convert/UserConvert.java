@@ -1,9 +1,11 @@
-package com.ntg.JobHunter.utils;
+package com.ntg.JobHunter.utils.convert;
 
 import com.ntg.JobHunter.domain.res.CreatedUserResponse;
 import com.ntg.JobHunter.domain.res.UpdatedUserResponse;
 import com.ntg.JobHunter.domain.User;
 
+
+// Function to convert User -> CreatedUserResponse, UpdateUserResponse
 public class UserConvert {
     public static CreatedUserResponse convertToResCreatedUserRes(User user){
         CreatedUserResponse res = new CreatedUserResponse();
@@ -12,7 +14,7 @@ public class UserConvert {
         res.setEmail(user.getEmail());
         res.setAddress(user.getAddress());
         res.setAge(user.getAge());
-        res.setCreatedDate(user.getCreatedDate());
+        res.setCreatedDate(user.getCreatedAt());
         res.setGender(user.getGender());
         res.setName(user.getName());
         return res;
@@ -25,7 +27,7 @@ public class UserConvert {
         res.setAge(user.getAge());
         res.setGender(user.getGender());
         res.setName(user.getName());
-        res.setLastModifiedDate(user.getLastModifiedDate());
+        res.setLastModifiedDate(user.getUpdatedAt());
         return res;
     }
 }

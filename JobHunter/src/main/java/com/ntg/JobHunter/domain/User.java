@@ -1,24 +1,24 @@
 package com.ntg.JobHunter.domain;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.time.Instant;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ntg.JobHunter.domain.constant.GenderEnum;
+import com.ntg.JobHunter.utils.security.SecurityUtils;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.*;
-
-import java.io.Serializable;
-import java.time.Instant;
-import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name="users")
-@Getter @Setter @AllArgsConstructor @NoArgsConstructor
-public class User extends AbstractAuditingEntity<User>{
+@Getter 
+@Setter 
+@AllArgsConstructor 
+@NoArgsConstructor
+public class User{
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -49,4 +49,23 @@ public class User extends AbstractAuditingEntity<User>{
     @JsonProperty("refresh_token")
     private String refreshToken;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss a", timezone = "GMT+7")
+    private Instant createdAt;
+    private String createdBy;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss a", timezone = "GMT+7")
+    private Instant updatedAt;
+    private String updatedBy;
+
+
+    @PrePersist
+    public void handleCreatedAt() {
+        this.createdAt = Instant.now();
+        this.createdBy = SecurityUtils.getCurrentUserLogin().get();
+    }
+
+    @PreUpdate
+    public void handleUpdatedAt() {
+        this.updatedAt = Instant.now();
+        this.updatedBy = SecurityUtils.getCurrentUserLogin().get();
+    }
 }

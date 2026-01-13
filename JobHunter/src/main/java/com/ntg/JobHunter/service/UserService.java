@@ -6,7 +6,7 @@ import com.ntg.JobHunter.domain.res.UpdatedUserResponse;
 import com.ntg.JobHunter.domain.User;
 import com.ntg.JobHunter.domain.dto.UpdateUserDTO;
 import com.ntg.JobHunter.repository.UserRepository;
-import com.ntg.JobHunter.utils.UserConvert;
+import com.ntg.JobHunter.utils.convert.UserConvert;
 import com.ntg.JobHunter.utils.exception.IdInvalidException;
 import com.ntg.JobHunter.utils.response.FormatResultPagination;
 import lombok.RequiredArgsConstructor;

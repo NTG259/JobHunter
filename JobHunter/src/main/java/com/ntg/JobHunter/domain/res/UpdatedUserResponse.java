@@ -1,5 +1,6 @@
 package com.ntg.JobHunter.domain.res;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ntg.JobHunter.domain.constant.GenderEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,6 +24,6 @@ public class UpdatedUserResponse {
 
     private GenderEnum gender;
 
-    //    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss a", timezone = "GMT+7")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss a", timezone = "GMT+7")
     private Instant lastModifiedDate;
 }

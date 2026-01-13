@@ -4,7 +4,8 @@ import com.ntg.JobHunter.domain.User;
 import com.ntg.JobHunter.domain.res.CreatedUserResponse;
 import com.ntg.JobHunter.domain.res.MetaResponse;
 import com.ntg.JobHunter.domain.res.ResultPaginationResponse;
-import com.ntg.JobHunter.utils.UserConvert;
+import com.ntg.JobHunter.utils.convert.UserConvert;
+
 import org.springframework.data.domain.Page;
 
 import java.util.List;
